@@ -6,7 +6,7 @@ import AboutPage from './pages/about/about.page';
 import SignInPage from './pages/sign-in/sign-in.page';
 import SignUpPage from './pages/sign-up/sign-up.page';
 import Header from './components/header/header';
-import { GlobalStyles } from './globalstyles';
+import { GlobalStyles, PagesStyles } from './globalstyles';
 
 
 function App() {
@@ -14,12 +14,14 @@ function App() {
     <div>
       <GlobalStyles />
       <Header />
-      <Switch>
-        <Route exact path='/' component={HomePage} />
-        <Route exact path='/about' component={AboutPage} />
-        <Route exact path='/signin' component={SignInPage} />
-        <Route exact path='/signup' component={SignUpPage} />
-      </Switch>
+      <PagesStyles>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/about' component={AboutPage} />
+          <Route exact path='/signin' component={SignInPage} />
+          <Route exact path='/signup' component={SignUpPage} />
+        </Switch>
+      </PagesStyles>
     </div>
 
   );

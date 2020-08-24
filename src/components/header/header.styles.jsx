@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 export const Container = styled.nav`
     width: 100%;
     height: 10vh;
-    display: fixed;
+    position: fixed;
     top: 0;
     padding: 0em 2rem;
     display: flex;
