@@ -5,6 +5,7 @@ import HomePage from './pages/home/home.page';
 import AboutPage from './pages/about/about.page';
 import SignInPage from './pages/sign-in/sign-in.page';
 import SignUpPage from './pages/sign-up/sign-up.page';
+import ProfilePage from './pages/profile/profile.page';
 import Header from './components/header/header';
 import { GlobalStyles, PagesStyles } from './globalstyles';
 
@@ -20,6 +21,7 @@ function App() {
           <Route exact path='/about' component={AboutPage} />
           <Route exact path='/signin' component={SignInPage} />
           <Route exact path='/signup' component={SignUpPage} />
+          <Route exact path='/:id' component={ProfilePage} />
         </Switch>
       </PagesStyles>
     </div>

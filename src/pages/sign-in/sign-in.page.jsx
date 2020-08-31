@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-
+import {SignInWithGoogle} from '../../firebase/firebase'
 import InputField from '../../components/inputfield/inputfield';
 import {Card, Avatar, Title} from '../../styles/card/card.styles';
 import {Container} from '../../styles/container/container.styles';
@@ -42,6 +42,7 @@ const SignInPage = () => {
                     inputChange={(e) => setPassword(e.target.value)}
                     />
                     <SubmitButtom type='submit'  text='Sign In'/>
+                    <SubmitButtom onClick={SignInWithGoogle}  text='Sign In With Google'/>
                 </form>
             </Card>   
         </Container>
