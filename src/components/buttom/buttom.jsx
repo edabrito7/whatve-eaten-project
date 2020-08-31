@@ -3,9 +3,9 @@ import React from 'react';
 
 import { ButtomStyle } from './buttom.styles';
 
-const Buttom = ({text}) => {
+const Buttom = ({text, ...props}) => {
     return(
-        <ButtomStyle>
+        <ButtomStyle{...props}>
             {text}
         </ButtomStyle>
     )

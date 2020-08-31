@@ -1,7 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import { Container, Card, Avatar, Title, Content } from './about.page.styles';
+
+import {Card, Avatar, Title} from '../../styles/card/card.styles';
+import {Container} from '../../styles/container/container.styles';
+import { Content } from './about.page.styles';
 
 const AboutPage = () => {
     return(

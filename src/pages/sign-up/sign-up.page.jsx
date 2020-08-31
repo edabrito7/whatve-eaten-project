@@ -1,11 +1,17 @@
 import React from 'react';
 
 
+import {Card, Avatar, Title} from '../../styles/card/card.styles';
+import {Container} from '../../styles/container/container.styles';
+
 const SignUpPage = () => {
     return(
-        <div>
-            <h1>Sign Up Page</h1>
-        </div>
+        <Container>
+            <Card>
+                <Avatar/>
+                <Title>Sign Up Page</Title>
+            </Card>
+        </Container>
     )
 }
 
