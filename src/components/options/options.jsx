@@ -1,13 +1,16 @@
-import React from 'react';
+import React,{useContext} from 'react';
 
 
 import CardOption from '../card-option/card-option';
-import {FOOD} from '../../utils/food.constants';
+
+import FoodContext from '../../contexts/food/food.context';
+
 import {Container, GridOptions,Title} from './options.styles';
 
 
 const Options = () => {
-    const MapFood = FOOD.map( (food, key) => {
+    const foods = useContext(FoodContext);
+    const MapFood = foods.map( (food, key) => {
         return <CardOption image={food} key={key} />
     })
     return(

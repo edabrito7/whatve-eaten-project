@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-
 import {Container} from './card-option.styles';
 
 const CardOption = ({image}) => {

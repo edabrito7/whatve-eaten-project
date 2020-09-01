@@ -8,6 +8,8 @@ import SignUpPage from './pages/sign-up/sign-up.page';
 import ProfilePage from './pages/profile/profile.page';
 import Header from './components/header/header';
 
+import UserContext from './contexts/user/user.context';
+
 import {Auth} from './firebase/firebase';
 
 import { GlobalStyles, PagesStyles } from './globalstyles';
@@ -22,9 +24,9 @@ const App = () => {
       console.log(user.uid)
       setUser(user);
       setisSignIn(true)
-    }
-    else {
-      console.log("NO USER")
+    } else{
+      setUser(null);
+      setisSignIn(false);
     }
   })
 
@@ -34,7 +36,9 @@ const App = () => {
   return (
     <div>
       <GlobalStyles />
-      <Header isSigned={isSignIn} userId={user} />
+      <UserContext.Provider value={user}>
+        <Header isSigned={isSignIn} />
+      </UserContext.Provider>
       <PagesStyles>
         <Switch>
           <Route exact path='/' component={HomePage} />

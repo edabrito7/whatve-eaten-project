@@ -6,6 +6,7 @@ import {COLORS} from '../../utils/color.constans';
 export const Container = styled.div`
 
     width: 25vw;
+    min-height: 100%;
     height: 90vh;
     padding: 2rem;
     border-right: 5px solid ${COLORS.primary};
@@ -23,7 +24,7 @@ export const Title = styled.h2`
 export const GridOptions = styled.div`
 
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     row-gap: 20px;
 
 `;

@@ -2,6 +2,9 @@ import styled from 'styled-components';
 
 import {Link} from 'react-router-dom';
 
+import {COLORS} from '../../utils/color.constans';
+
+
 export const Container = styled.nav`
     width: 100%;
     height: 10vh;
@@ -11,7 +14,7 @@ export const Container = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #ff9709;
+    background-color: ${COLORS.primary};
 
 
     @media screen and (max-width: 800px) {
@@ -32,12 +35,12 @@ export const OptionLink = styled(Link)`
     
     display: inline;
     margin-left: 1rem;
-    color: #fbeee4;
+    color: ${COLORS.light};
     font-size: 1.75rem;
     text-align: center;
     padding: 0.15rem 0.25rem;
     &:hover {
-        color: #dd8000;
+        color: ${COLORS.secundary};
     }
 
     @media screen and (max-width: 800px) {
@@ -47,14 +50,15 @@ export const OptionLink = styled(Link)`
 `;
 
 
+
 export const SignUpLink = styled(OptionLink)`
-    border: 5px solid #fbeee4;
+    border: 5px solid ${COLORS.light};
     border-radius: 10px;
-    background-color: #fbeee4;
-    color: #ff9709;
+    background-color: ${COLORS.light};
+    color: ${COLORS.primary};
 
     &:hover {
-        color: #dd8000;
+        color: ${COLORS.secundary};
     }
 `;
 

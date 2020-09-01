@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
+
+import UserContext from '../../contexts/user/user.context';
+
 
 import {Auth} from '../../firebase/firebase';
 import Logo from '../logo/logo';
@@ -6,7 +9,14 @@ import {Container, NavigationLinks, OptionLink, SignUpLink } from './header.styl
 
 
 
-const Header = ({isSigned, userId}) => {
+const Header = ({isSigned}) => {
+    const user = useContext(UserContext);
+    console.log(user);
+
+    const signingOut = () => {
+        Auth.signOut();
+    }
+
     return(
         <Container>
             <Logo />
@@ -14,14 +24,14 @@ const Header = ({isSigned, userId}) => {
                 {isSigned===true ? (
                     <React.Fragment>
                         <OptionLink to='/about' >About</OptionLink>
-                        <OptionLink to='/' onCLick={Auth.signOut()} >Sign Out</OptionLink>
+                        <OptionLink to='/' as='div' onClick={signingOut}>Sign Out</OptionLink>
                         <SignUpLink to='/:id'>Profile</SignUpLink>
                     </React.Fragment>
                 ): (
                     <React.Fragment>
                         <OptionLink to='/about' >About</OptionLink>
                         <OptionLink to='/signin' >Sign In</OptionLink>
-                        <SignUpLink to={`/home/${userId}`}>Sign Up</SignUpLink>
+                        <SignUpLink to='/signup'>Sign Up</SignUpLink>
                     </React.Fragment>
                 )}
             </NavigationLinks>
