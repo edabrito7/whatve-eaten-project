@@ -14,4 +14,5 @@ export const Container = styled.div`
     background-size: cover;
     border-radius: 50%;
     border: 4px solid black;
+    cursor: pointer;
 `;
