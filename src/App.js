@@ -10,7 +10,7 @@ import Header from './components/header/header';
 
 import UserContext from './contexts/user/user.context';
 
-import {Auth} from './firebase/firebase';
+import {Auth, AddUser} from './firebase/firebase';
 
 import { GlobalStyles, PagesStyles } from './globalstyles';
 
@@ -22,6 +22,9 @@ const App = () => {
   useEffect(() => { Auth.onAuthStateChanged( (user) => {
     if (user) {
       console.log(user.uid)
+      console.log(user.displayName)
+      console.log(user.email)
+      AddUser(user)
       setUser(user);
       setisSignIn(true)
     } else{

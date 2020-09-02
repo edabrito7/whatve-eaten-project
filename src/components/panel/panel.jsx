@@ -7,7 +7,7 @@ import React,{useState} from 'react';
 import clarifaiApp from '../../clarifai/clarifai';
 import InputField from '../inputfield/inputfield';
 import Buttom from '../buttom/buttom';
-import MyResponsiveBar from '../chart-bar/chart';
+import MyResponsivePie from '../chart-bar/chart';
 import {Container,PictureBox, ChartBox} from './panel.styles';
 
 
@@ -49,7 +49,7 @@ const Panel = () => {
                 {
                     (data === null) ? 
                     (<h2>No data to show</h2> ) :
-                    (<MyResponsiveBar   />)
+                    (<MyResponsivePie data={data}  />)
                 }
             </ChartBox>
         </Container>
