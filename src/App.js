@@ -41,7 +41,6 @@ const App = () => {
       <GlobalStyles />
       <UserContext.Provider value={user}>
         <Header isSigned={isSignIn} />
-      </UserContext.Provider>
       <PagesStyles>
         <Switch>
           <Route exact path='/' component={HomePage} />
@@ -51,6 +50,7 @@ const App = () => {
           <Route exact path='/home/:id' component={ProfilePage} />
         </Switch>
       </PagesStyles>
+      </UserContext.Provider>
     </div>
 
   );

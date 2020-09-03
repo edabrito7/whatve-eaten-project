@@ -38,6 +38,53 @@ export const AddUser = async (Auth, additionalData) => {
 }
 
 
+export const AddFoodsIngredients = async (Auth, ingredient) => {
+    if(!Auth) return
+
+    const foodRef = db.doc(`users/${Auth.uid}/food/${ingredient.id}`)
+    console.log(foodRef);
+    const snapShot = await foodRef.get();
+    console.log(snapShot);
+
+    if(!snapShot.exists) {
+        const {id, name, value} = ingredient;
+        try {
+            await foodRef.set({
+                id,
+                name,
+                value
+            })
+        }
+        catch (error) {
+            console.log("Error with food", error)
+        }
+    } else {
+        try {
+            return foodRef.update({value: 5 })
+        }
+        catch (error) {
+            console.log("Error with update food", error)
+        }
+    }
+
+}
+
+export const ReadFoodData = async (Auth) => {
+
+    const foodRef = db.collection(`users/${Auth.uid}/food`)
+    const snapShot = await foodRef.get()
+    
+    let food = []
+    snapShot.forEach((doc) => {
+        food.push(doc.data())
+    })
+
+    return food
+
+}
+
+
+
 export const Auth = firebase.auth();
 
 

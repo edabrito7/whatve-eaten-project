@@ -25,7 +25,7 @@ const Header = ({isSigned}) => {
                     <React.Fragment>
                         <OptionLink to='/about' >About</OptionLink>
                         <OptionLink to='/' as='div' onClick={signingOut}>Sign Out</OptionLink>
-                        <SignUpLink to='/:id'>Profile</SignUpLink>
+                        <SignUpLink to='/home/123'>Profile</SignUpLink>
                     </React.Fragment>
                 ): (
                     <React.Fragment>
