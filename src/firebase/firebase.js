@@ -42,12 +42,10 @@ export const AddFoodsIngredients = async (Auth, ingredient) => {
     if(!Auth) return
 
     const foodRef = db.doc(`users/${Auth.uid}/food/${ingredient.id}`)
-    console.log(foodRef);
     const snapShot = await foodRef.get();
-    console.log(snapShot);
-
+    const {id, name, value} = ingredient;
     if(!snapShot.exists) {
-        const {id, name, value} = ingredient;
+        
         try {
             await foodRef.set({
                 id,
@@ -60,7 +58,11 @@ export const AddFoodsIngredients = async (Auth, ingredient) => {
         }
     } else {
         try {
-            return foodRef.update({value: 5 })
+            return foodRef.update({
+                id,
+                name,
+                value: value+1,
+            })
         }
         catch (error) {
             console.log("Error with update food", error)
@@ -71,9 +73,8 @@ export const AddFoodsIngredients = async (Auth, ingredient) => {
 
 export const ReadFoodData = async (Auth) => {
 
-    const foodRef = db.collection(`users/${Auth.uid}/food`)
+    const foodRef = db.collection(`users/${Auth.uid}/food`).orderBy("value", 'desc').limit(12)
     const snapShot = await foodRef.get()
-    
     let food = []
     snapShot.forEach((doc) => {
         food.push(doc.data())

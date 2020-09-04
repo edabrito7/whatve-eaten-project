@@ -1,10 +1,10 @@
 import React from 'react';
 import { ResponsivePie } from '@nivo/pie'
 
+import {COLORS} from '../../utils/color.constans';
 
-import {DATA_EXAMPLE} from '../../utils/example.data';
 
-const MyResponsivePie = ({ data=DATA_EXAMPLE /* see data tab */ }) => (
+const MyResponsivePie = ({ data }) => (
     <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -17,14 +17,14 @@ const MyResponsivePie = ({ data=DATA_EXAMPLE /* see data tab */ }) => (
         radialLabel="name"
         radialLabelsSkipAngle={10}
         radialLabelsTextXOffset={6}
-        radialLabelsTextColor="#333333"
+        radialLabelsTextColor={`${COLORS.dark}`}
         radialLabelsLinkOffset={0}
         radialLabelsLinkDiagonalLength={16}
         radialLabelsLinkHorizontalLength={24}
         radialLabelsLinkStrokeWidth={1}
         radialLabelsLinkColor={{ from: 'color' }}
         slicesLabelsSkipAngle={10}
-        slicesLabelsTextColor="#333333"
+        slicesLabelsTextColor={`${COLORS.dark}`}
         animate={true}
         motionStiffness={90}
         motionDamping={15}
@@ -32,19 +32,19 @@ const MyResponsivePie = ({ data=DATA_EXAMPLE /* see data tab */ }) => (
 
         legends={[
             {
-                anchor: 'bottom',
-                direction: 'row',
-                translateY: 56,
+                anchor: 'top-left',
+                direction: 'column',
+                translateX: -60,
                 itemWidth: 100,
-                itemHeight: 18,
-                itemTextColor: '#999',
-                symbolSize: 18,
+                itemHeight: 24,
+                itemTextColor: `${COLORS.dark}`,
+                symbolSize: 24,
                 symbolShape: 'circle',
                 effects: [
                     {
                         on: 'hover',
                         style: {
-                            itemTextColor: '#000'
+                            itemTextColor: `${COLORS.light}`
                         }
                     }
                 ]

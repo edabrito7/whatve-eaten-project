@@ -18,50 +18,47 @@ import {Container,PictureBox, ChartBox} from './panel.styles';
 
 
 
-
 const Panel = () => {
     const [image, setImage] = useState('');
     const [data, setData] = useState(null);
+    const [hasChanged, setHasChanged] = useState(false)
     const user = useContext(userContext);
 
 
-    useEffect(() => {
-        
-        
-        (async () => {
-            const resultados = await ReadFoodData(user);
-            console.log(resultados);
-            setData(resultados);
-          })()
-        
-    },[])
+ 
 
+    useEffect(() => {
+        (async () => {
+            const foodFromFirestore = await ReadFoodData(user);
+            console.log(foodFromFirestore);
+            setData(foodFromFirestore);
+            console.log(hasChanged);
+          })()
+    },[hasChanged])
 
     const AddItem = () => {
         console.log("On click data",data)
         setData((data) => data.map((ingredient) => ({...ingredient, value: ingredient.value + 1})))
-
     }
 
     const Predict =  () => {
         console.log(image)
         clarifaiApp.models.predict("bd367be194cf45149e75f01d59f77ba7",image)
         .then((res) => {
-            const result = res.outputs[0].data.concepts;
-            console.log(result);
-            const filteredData = result.filter( (ingredient) => {
+            const ingredients = res.outputs[0].data.concepts;
+            const filteredData = ingredients.filter( (ingredient) => {
                 return ingredient.value > 0.70;
+            }).map( (ingredient) => {
+                return {...ingredient, id:ingredient.name, value: 1}
             })
-            const datafinal = filteredData.map( (data) => {
-                return {...data, id:data.name, value: 1}
+            const  AddToFirestore = data.map( async (ingredient) => {
+                console.log(ingredient)
+                await AddFoodsIngredients(user, ingredient);
+                await setHasChanged(!hasChanged)      
             })
-            const addToFirestore = datafinal.map( (data) => {
-                AddFoodsIngredients(user, data)
-                return null
-            })
-            console.log("Data FInal",datafinal);
-            console.log(filteredData);
-            setData(datafinal);
+            
+            
+            
         })
         .catch((err) => console.log(err.message))
     }
@@ -88,7 +85,7 @@ const Panel = () => {
                 {
                     (data === null) ? 
                     (<h2>No data to show</h2> ) :
-                    (<MyResponsivePie data={data}  />)
+                    (<MyResponsivePie data={data}  /> )
                 }
             </ChartBox>
         </Container>
