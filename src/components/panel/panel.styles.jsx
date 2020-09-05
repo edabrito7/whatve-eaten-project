@@ -6,12 +6,18 @@ import {COLORS} from '../../utils/color.constans';
 export const Container = styled.div`
 
     padding: 1rem 3rem;
+    padding-left: ${(props) => props.open ? '400px' : '3rem'};
     background-color: ${COLORS.secundary};
-    width: 80vw;
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     grid-gap: 20px;
     justify-items: center;
+    transition: 0.5s;
+
+    @media screen and (max-width: 1050px) {
+        padding-left: ${(props) => props.open ? '300px' : '3rem'};
+    }
 `;
 
 

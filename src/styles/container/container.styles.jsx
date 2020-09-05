@@ -11,6 +11,7 @@ export const Container = styled.div`
     min-height: 90vh;
     height: 100%;
     padding: 2rem;
+    
     background-color: ${COLORS.light};
 
 `;

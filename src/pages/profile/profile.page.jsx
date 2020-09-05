@@ -1,12 +1,12 @@
-import React, {useContext} from 'react';
+import React, {useState, useContext} from 'react';
 
 
-import Options from '../../components/options/options';
+import SideBar from '../../components/sidebar/sidebar';
 import Panel from '../../components/panel/panel';
 import Wrapper from '../../components/Wrapper/wrapper';
 
 import userContext from '../../contexts/user/user.context';
-
+import SideBarProvider from '../../providers/sidebar.providers';
 import {Container} from './profile.page.styles';
 
 
@@ -16,8 +16,10 @@ const ProfilePage = () => {
     const user = useContext(userContext);
     return(
         <Container>
-            <Options/>
-            <WrapperPanel isloading={user} />
+            <SideBarProvider>
+                <SideBar/>
+                <WrapperPanel isloading={user} />
+            </SideBarProvider>
         </Container>
         
     )

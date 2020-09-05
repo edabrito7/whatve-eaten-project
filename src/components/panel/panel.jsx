@@ -10,6 +10,9 @@ import Buttom from '../buttom/buttom';
 import MyResponsivePie from '../chart-bar/chart';
 
 import userContext from '../../contexts/user/user.context';
+import {SideBarContext} from '../../providers/sidebar.providers';
+
+
 import {AddFoodsIngredients,ReadFoodData } from '../../firebase/firebase';
 
 import {Container,PictureBox, ChartBox} from './panel.styles';
@@ -23,6 +26,8 @@ const Panel = () => {
     const [data, setData] = useState(null);
     const [hasChanged, setHasChanged] = useState(false)
     const user = useContext(userContext);
+    const openBar = useContext(SideBarContext);
+    console.log("Panel",openBar.open)
 
 
  
@@ -36,10 +41,6 @@ const Panel = () => {
           })()
     },[hasChanged])
 
-    const AddItem = () => {
-        console.log("On click data",data)
-        setData((data) => data.map((ingredient) => ({...ingredient, value: ingredient.value + 1})))
-    }
 
     const Predict =  () => {
         console.log(image)
@@ -51,7 +52,7 @@ const Panel = () => {
             }).map( (ingredient) => {
                 return {...ingredient, id:ingredient.name, value: 1}
             })
-            const  AddToFirestore = data.map( async (ingredient) => {
+            const  AddToFirestore = filteredData.map( async (ingredient) => {
                 console.log(ingredient)
                 await AddFoodsIngredients(user, ingredient);
                 await setHasChanged(!hasChanged)      
@@ -64,9 +65,10 @@ const Panel = () => {
     }
 
     return(
-        <Container>
+        <Container  open={openBar.open}>
             <div>
-            <h3>Hello Username...</h3>
+            <Buttom onClick={openBar.toggleOpen} text='Open'/>
+            <h3>Hello {user.displayName}...</h3>
             <span>You data will display below</span>
             <p>Insert a link of you food below and you will see it -></p>
             <InputField
@@ -78,7 +80,6 @@ const Panel = () => {
             />
             <Buttom onClick={Predict}  text='Predict'/>
             <Buttom onClick={() => setImage('')}  text='Erase'/>
-            <Buttom onClick={AddItem} text='Add count'/>
             </div>
             <PictureBox  imagen={image}/>
             <ChartBox>
