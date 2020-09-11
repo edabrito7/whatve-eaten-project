@@ -4,7 +4,7 @@ import {SignInWithGoogle} from '../../firebase/firebase'
 import InputField from '../../components/inputfield/inputfield';
 import {Card, Avatar, Title} from '../../styles/card/card.styles';
 import {Container} from '../../styles/container/container.styles';
-import {SubmitButtom} from './sign-in.page.styles';
+import {SubmitButtom, ContainerButtom} from './sign-in.page.styles';
 
 
 
@@ -41,8 +41,10 @@ const SignInPage = () => {
                     value={password}
                     inputChange={(e) => setPassword(e.target.value)}
                     />
-                    <SubmitButtom type='submit'  text='Sign In'/>
-                    <SubmitButtom onClick={SignInWithGoogle}  text='Sign In With Google'/>
+                    <ContainerButtom>
+                        <SubmitButtom type='submit'  text='Sign In'/>
+                        <SubmitButtom onClick={SignInWithGoogle}  text='Sign In Google'/>
+                    </ContainerButtom>
                 </form>
             </Card>   
         </Container>

@@ -5,7 +5,7 @@ import { ButtomStyle } from './buttom.styles';
 
 const Buttom = ({text, ...props}) => {
     return(
-        <ButtomStyle{...props}>
+        <ButtomStyle {...props}>
             {text}
         </ButtomStyle>
     )

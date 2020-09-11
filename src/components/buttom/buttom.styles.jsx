@@ -15,6 +15,7 @@ export const ButtomStyle = styled.button`
     font-weight: bold;
     text-transform: uppercase;
     padding: 0.5em;
+    margin: 0.5rem;
     cursor: pointer;
 
 

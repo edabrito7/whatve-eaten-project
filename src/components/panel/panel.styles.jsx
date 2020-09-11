@@ -20,6 +20,34 @@ export const Container = styled.div`
     }
 `;
 
+export const ContainerTitle = styled.div`
+
+    display: flex;
+    align-items: center;
+
+`;
+
+
+export const Icon = styled.img`
+
+    margin-right: 0.5rem;
+    height: 2rem;
+    cursor: pointer;
+`;
+
+export const Title = styled.h3`
+
+    font-size: 2rem;
+
+`;
+
+
+export const ContainerButtom = styled.div`
+
+    margin: 1rem 0rem;
+    display: flex;
+
+`;
 
 export const PictureBox = styled.div`
 

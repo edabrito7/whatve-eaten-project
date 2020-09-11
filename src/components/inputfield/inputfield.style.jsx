@@ -29,7 +29,6 @@ export const Inputstyles = styled.input`
     box-sizing: border-box;
     margin: 0;
     padding: 0.5rem;
-    
     font-family: 'Londrina Solid';
     font-size: 1.2rem;
     
