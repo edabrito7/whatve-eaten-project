@@ -1,9 +1,12 @@
 import React from 'react';
 
-import Buttom from '../buttom/buttom';
-import { Box, Avatar, Content } from './infobox.styles';
+
+import { Box, Avatar, Content, OptionLink } from './infobox.styles';
 
 const InfoBox = () => {
+
+
+
     return(
         <Box>
             <Avatar/>
@@ -12,9 +15,10 @@ const InfoBox = () => {
                 <p>
                     I can tell you what you eat and more...
                 </p>
-                <Buttom text="see more" />
+                <OptionLink  to='/about' >See More</OptionLink>  
             </Content>
         </Box>
+        
     )
 }
 

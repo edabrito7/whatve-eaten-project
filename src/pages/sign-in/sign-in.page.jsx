@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {SignInWithGoogle} from '../../firebase/firebase'
+import {Auth, SignInWithGoogle} from '../../firebase/firebase'
 import InputField from '../../components/inputfield/inputfield';
 import {Card, Avatar, Title} from '../../styles/card/card.styles';
 import {Container} from '../../styles/container/container.styles';
@@ -14,10 +14,8 @@ const SignInPage = () => {
     const [password, setPassword] = useState('')
 
     const HandleSubmit = async event => {
-        event.preventDefault()
-        console.log("Submited");
-        console.log(email);
-        console.log(password);
+        event.preventDefault();
+        Auth.signInWithEmailAndPassword(email,password).catch((err) => alert("Sorry, try later"))
     }
 
     return(

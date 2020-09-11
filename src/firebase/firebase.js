@@ -11,21 +11,21 @@ const db = firebase.firestore();
 
 
 
-export const AddUser = async (Auth, additionalData) => {
+export const AddUser = async (userAuth, additionalData) => {
 
-    if(!Auth) return
+    if(!userAuth) return
 
-    const userRef = db.doc(`users/${Auth.uid}`);
+    const userRef = db.doc(`users/${userAuth.uid}`);
     const snapShot = await userRef.get();
 
 
     const createdAt = new Date();
 
     if(!snapShot.exists) {
-        const {displayName, email} = Auth;
+        const {displayName, email} = userAuth;
         try {
             await userRef.set({
-             name: displayName,
+             displayName,
              email,
              date: createdAt,
              ...additionalData
@@ -35,6 +35,8 @@ export const AddUser = async (Auth, additionalData) => {
             console.log("error")
         }
     }
+
+    return userRef;
 }
 
 
@@ -71,9 +73,9 @@ export const AddFoodsIngredients = async (Auth, ingredient) => {
 
 }
 
-export const ReadFoodData = async (Auth) => {
+export const ReadFoodData = async (userAuth) => {
 
-    const foodRef = db.collection(`users/${Auth.uid}/food`).orderBy("value", 'desc').limit(12)
+    const foodRef = db.collection(`users/${userAuth.uid}/food`).orderBy("value", 'desc').limit(12)
     const snapShot = await foodRef.get()
     let food = []
     snapShot.forEach((doc) => {

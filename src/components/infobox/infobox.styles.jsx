@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 import AvatarImg from '../../assets/chef.png'
+import {COLORS} from '../../utils/color.constans';
 
+
+import {Link} from 'react-router-dom';
 
 export const Box = styled.div`
     width: 200px;
@@ -39,9 +42,30 @@ export const Avatar = styled.div`
 
 export const Content = styled.section`
     display: block;
+    color: ${COLORS.dark};
 
     @media screen and (max-width: 800px) {
         display: none;
+    }
+
+`;
+
+
+
+
+
+
+export const OptionLink = styled(Link)`
+    
+    border: 5px solid ${COLORS.light};
+    border-radius: 10px;
+    background-color: ${COLORS.light};
+    color: ${COLORS.primary};
+    cursor: pointer;
+    padding: 0.25rem;
+
+    &:hover {
+        color: ${COLORS.secundary};
     }
 
 `;

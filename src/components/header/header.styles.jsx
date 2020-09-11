@@ -39,6 +39,7 @@ export const OptionLink = styled(Link)`
     font-size: 1.75rem;
     text-align: center;
     padding: 0.15rem 0.25rem;
+    cursor: pointer;
     &:hover {
         color: ${COLORS.secundary};
     }

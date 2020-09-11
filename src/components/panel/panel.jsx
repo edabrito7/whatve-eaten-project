@@ -27,12 +27,11 @@ const Panel = () => {
     const [hasChanged, setHasChanged] = useState(false)
     const user = useContext(userContext);
     const openBar = useContext(SideBarContext);
-    console.log("Panel",openBar.open)
 
 
  
 
-    useEffect((user) => {
+    useEffect(() => {
         (async () => {
             const foodFromFirestore = await ReadFoodData(user);
             setData(foodFromFirestore);

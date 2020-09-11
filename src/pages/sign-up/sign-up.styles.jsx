@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import Buttom from '../../components/buttom/buttom'
 
 import {Card} from '../../styles/card/card.styles';
 
@@ -32,4 +33,11 @@ export const CardSignUp = styled(Card)`
 
 `;
 
+
+
+
+
+export const SubmitButtom = styled(Buttom)`
+
+`;
 

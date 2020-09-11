@@ -19,10 +19,7 @@ const AboutPage = () => {
                     We keep track of what you eat and how many times you have.. just <Link to='/signup'>Sign up</Link> and enjoy!
                 </Content>
                 <Content>
-                    but.. because we're awesome.. we let you try anonymously.
-                </Content>
-                <Content>
-                    Paste an public url link to an image of what you've eaten below
+                    but.. because we're awesome.. We let you use your Google credentials.
                 </Content>
             </Card>
         </Container>

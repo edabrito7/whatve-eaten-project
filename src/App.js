@@ -17,37 +17,32 @@ import { GlobalStyles, PagesStyles } from './globalstyles';
 
 const App = () => {
   const [user, setUser] = useState(null);
-  const [isSignIn, setisSignIn] = useState(false)
   
-  useEffect(() => { Auth.onAuthStateChanged( (user) => {
+  useEffect(() => { Auth.onAuthStateChanged( async (user) => {
     if (user) {
-      console.log(user.uid)
-      console.log(user.displayName)
-      console.log(user.email)
-      AddUser(user)
-      setUser(user);
-      setisSignIn(true)
+      const userRef = await AddUser(user)
+      userRef.onSnapshot( snapShot => {
+        setUser({uid: user.uid,...snapShot.data()})
+      })
     } else{
       setUser(null);
-      setisSignIn(false);
+      
     }
   })
-
-      console.log("Auth CHanged")
   },[])
 
   return (
     <div>
       <GlobalStyles />
       <UserContext.Provider value={user}>
-        <Header isSigned={isSignIn} />
+        <Header isSigned={user} />
       <PagesStyles>
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/about' component={AboutPage} />
           <Route exact path='/signin' render={() => user===null ? <SignInPage/> : <Redirect to='/'/>} />
           <Route exact path='/signup' render={() => user===null ? <SignUpPage/> : <Redirect to='/'/>}/>
-          <Route exact path='/home/:id' component={ProfilePage} />
+          <Route exact path='/home' render={() => user===null ? <Redirect to='/'/> : <ProfilePage/>} />
         </Switch>
       </PagesStyles>
       </UserContext.Provider>
