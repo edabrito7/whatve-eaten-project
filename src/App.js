@@ -25,8 +25,7 @@ const App = () => {
         setUser({uid: user.uid,...snapShot.data()})
       })
     } else{
-      setUser(null);
-      
+      setUser(null);  
     }
   })
   },[])

@@ -15,7 +15,11 @@ const SignInPage = () => {
 
     const HandleSubmit = async event => {
         event.preventDefault();
-        Auth.signInWithEmailAndPassword(email,password).catch((err) => alert("Sorry, try later"))
+        try {
+            Auth.signInWithEmailAndPassword(email,password)
+        } catch(error) {
+            alert("Sorry, try later")
+        }
     }
 
     return(

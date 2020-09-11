@@ -1,9 +1,6 @@
 import React,{useState,useEffect, useContext} from 'react';
 
 
-
-
-
 import clarifaiApp from '../../clarifai/clarifai';
 import InputField from '../inputfield/inputfield';
 import Buttom from '../buttom/buttom';
@@ -23,7 +20,7 @@ import {Container,ContainerButtom,ContainerTitle, Icon, Title, PictureBox, Chart
 
 const Panel = () => {
     const [image, setImage] = useState('');
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [hasChanged, setHasChanged] = useState(false)
     const user = useContext(userContext);
     const openBar = useContext(SideBarContext);
@@ -32,15 +29,15 @@ const Panel = () => {
  
 
     useEffect(() => {
-        (async () => {
+         (async () => {
             const foodFromFirestore = await ReadFoodData(user);
             setData(foodFromFirestore);
           })()
+          // eslint-disable-next-line
     },[hasChanged])
 
 
     const Predict =  () => {
-        console.log(image)
         clarifaiApp.models.predict("bd367be194cf45149e75f01d59f77ba7",image)
         .then((res) => {
             const ingredients = res.outputs[0].data.concepts;
@@ -50,12 +47,10 @@ const Panel = () => {
                 return {...ingredient, id:ingredient.name, value: 1}
             })
             const  AddToFirestore = filteredData.map( async (ingredient) => {
-                console.log(ingredient)
                 await AddFoodsIngredients(user, ingredient);
                 await setHasChanged(!hasChanged)      
             })
-            
-            
+            AddToFirestore();    
             
         })
         .catch((err) => console.log(err.message))
@@ -84,9 +79,9 @@ const Panel = () => {
             <PictureBox  imagen={image}/>
             <ChartBox>
                 {
-                    (data === null) ? 
-                    (<h2>No data to show</h2> ) :
-                    (<MyResponsivePie data={data}  /> )
+                    (Array.isArray(data) && data.length > 0) ? 
+                    (<MyResponsivePie data={data}  /> ) :
+                    (<h2>No data to show...</h2> )
                 }
             </ChartBox>
         </Container>
