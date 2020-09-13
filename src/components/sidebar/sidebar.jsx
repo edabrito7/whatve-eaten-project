@@ -12,6 +12,7 @@ import {Container, GridOptions,Title} from './sidebar.styles';
 import {SideBarContext} from '../../providers/sidebar.providers';
 
 
+
 const SideBar = () => {
     const foods = useContext(FoodContext);
     const sideBar = useContext(SideBarContext)
