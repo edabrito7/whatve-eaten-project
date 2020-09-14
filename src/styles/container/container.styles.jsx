@@ -7,12 +7,10 @@ export const Container = styled.div`
 
     display: flex;
     justify-content: center;
-    width: 100%;
-    min-height: 90vh;
-    height: 100%;
     padding: 2rem;
     
-    background-color: ${COLORS.light};
+    background: ${COLORS.light} no-repeat center center;
+    background-attachment: fixed;
 
 `;
 

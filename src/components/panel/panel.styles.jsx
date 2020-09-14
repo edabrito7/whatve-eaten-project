@@ -6,17 +6,17 @@ import {COLORS} from '../../utils/color.constans';
 export const Container = styled.div`
 
     padding: 1rem 3rem;
-    padding-left: ${(props) => props.open ? '400px' : '3rem'};
+    padding-left: ${(props) => props.open ? '420px' : '3rem'};
     background-color: ${COLORS.secundary};
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
     grid-gap: 20px;
-    justify-items: center;
+    justify-items: start;
     transition: 0.5s;
 
     @media screen and (max-width: 1050px) {
-        padding-left: ${(props) => props.open ? '300px' : '3rem'};
+        padding-left: ${(props) => props.open ? '0px' : '3rem'};
     }
 `;
 
@@ -38,6 +38,11 @@ export const Icon = styled.img`
 export const Title = styled.h3`
 
     font-size: 2rem;
+
+
+    @media screen and (max-width: 800px) {
+        font-size: 1.5rem;
+    }
 
 `;
 
@@ -61,6 +66,12 @@ export const PictureBox = styled.div`
     background-size: cover;
     background-repeat: no-repeat;
 
+
+    @media screen and (max-width: 600px) {
+        width: 100%;
+        height: 240px;
+    }
+
 `;
 
 
@@ -70,10 +81,28 @@ export const ChartBox = styled.div`
     border: 5px solid black;
     border-radius: 15px;
     grid-column: span 2;
+    position: relative;
 
 
     @media screen and (max-width: 1000px) {
         grid-column: span 1;
+    }
+
+    @media screen and (max-width: 800px) {
+        height: auto;
+    }
+
+`;
+
+
+export const ChartTitle = styled.h3`
+
+    position: absolute;
+    font-size: 1.5rem;
+    margin-left: 1.5rem;
+
+    @media screen and (max-width: 800px) {
+        display: none;
     }
 
 `;

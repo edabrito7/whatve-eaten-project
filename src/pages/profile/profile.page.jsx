@@ -7,7 +7,7 @@ import Wrapper from '../../components/Wrapper/wrapper';
 
 import userContext from '../../contexts/user/user.context';
 import SideBarProvider from '../../providers/sidebar.providers';
-import FavProvider from '../../providers/fav.providers';
+import ImageProvider from '../../providers/image.providers';
 import {Container} from './profile.page.styles';
 
 
@@ -17,12 +17,12 @@ const ProfilePage = () => {
     const user = useContext(userContext);
     return(
         <Container>
-            <FavProvider>
+            <ImageProvider>
                 <SideBarProvider>
                     <SideBar/>
                     <WrapperPanel isloading={user} />
                 </SideBarProvider>
-            </FavProvider>
+            </ImageProvider>
         </Container>
         
     )

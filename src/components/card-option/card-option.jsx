@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
 
-import {FavContext} from '../../providers/fav.providers';
+import {ImageContext} from '../../providers/image.providers';
 
 import {Container} from './card-option.styles';
 
 const CardOption = ({image}) => {
-    const favs = useContext(FavContext);
+    const favs = useContext(ImageContext);
     const selectFav = () => {
-        return favs.selectFav(image);
+        return favs.selectImage(image);
     }
 
     return(

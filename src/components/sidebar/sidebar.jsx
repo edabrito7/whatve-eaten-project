@@ -2,13 +2,12 @@ import React,{useContext} from 'react';
 
 
 import CardOption from '../card-option/card-option';
-import Buttom from '../buttom/buttom';
 
 
 import FoodContext from '../../contexts/food/food.context';
 
 
-import {Container, GridOptions,Title} from './sidebar.styles';
+import {Container, GridOptions,TitleContainer, Title, Close} from './sidebar.styles';
 import {SideBarContext} from '../../providers/sidebar.providers';
 
 
@@ -21,8 +20,12 @@ const SideBar = () => {
     })
     return( 
         <Container  open={sideBar.open}>
-            <Buttom onClick={sideBar.toggleOpen} text='X Close' />
-            <Title>Profile</Title>
+            <TitleContainer>
+            <Close onClick={sideBar.toggleOpen}/>
+            <Title>
+            
+                Suggestions</Title>
+            </TitleContainer>
             <GridOptions>
                 {MapFood}
             </GridOptions>

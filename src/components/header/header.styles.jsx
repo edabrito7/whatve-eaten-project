@@ -38,6 +38,7 @@ export const OptionLink = styled(Link)`
     color: ${COLORS.light};
     font-size: 1.75rem;
     text-align: center;
+    white-space: nowrap;
     padding: 0.15rem 0.25rem;
     cursor: pointer;
     &:hover {
@@ -45,7 +46,7 @@ export const OptionLink = styled(Link)`
     }
 
     @media screen and (max-width: 800px) {
-        font-size: 0.6rem;
+        font-size: 1rem;
     }
 
 `;
