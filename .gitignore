@@ -2,8 +2,6 @@
 
 # dependencies
 /node_modules
-/src/firebase/config.js
-/src/clarifai/clarifai.js
 /.pnp
 .pnp.js
 
