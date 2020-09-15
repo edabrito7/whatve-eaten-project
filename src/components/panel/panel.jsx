@@ -73,17 +73,20 @@ const Panel = () => {
                 inputChange={(e) => selection.selectImage(e.target.value)}
                 />
                 <ContainerButtom>
-                    <Buttom onClick={Predict}  text='Predict'/>
+                    <Buttom onClick={Predict}  text='Get it'/>
                     <Buttom onClick={() => selection.selectImage('')}  text='Erase'/>
                 </ContainerButtom>
             </div>
             <PictureBox  imagen={selection.image}/>
             <ChartBox>
-                <ChartTitle>My Favs</ChartTitle>
+                
                 {
                     (Array.isArray(data) && data.length > 0) ? 
-                    (<React.Fragment><PieChart data={data}  />
-                        <ListChart data={data}/></React.Fragment>   ) :
+                    (<React.Fragment>
+                        <ChartTitle>My Favs</ChartTitle>
+                        <PieChart data={data}  />
+                        <ListChart data={data}/>
+                    </React.Fragment>   ) :
                     (<h2>No data to show...</h2> )
                 }
             </ChartBox>
