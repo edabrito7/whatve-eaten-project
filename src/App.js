@@ -5,6 +5,7 @@ import {Switch, Route, Redirect} from 'react-router-dom';
 import HomePage from './pages/home/home.page';
 import Header from './components/header/header';
 import Spinner from './components/spinner/spinner';
+import ErrorBoundaries from './components/error-boundaries/error-boundaries';
 
 import UserContext from './contexts/user/user.context';
 
@@ -46,12 +47,16 @@ const App = () => {
       <PagesStyles>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Suspense fallback={<Spinner />}  >
-            <Route exact path='/about' component={AboutPage} />
-            <Route exact path='/signin' render={() => user===null ? <SignInPage/> : <Redirect to='/'/>} />
-            <Route exact path='/signup' render={() => user===null ? <SignUpPage/> : <Redirect to='/'/>}/>
-            <Route exact path='/home' render={() => user===null ? <Redirect to='/'/> : <ProfilePage/>} />
-          </Suspense>
+          <ErrorBoundaries>
+            <Suspense fallback={<Spinner />}  >
+              <Route exact path='/about' component={AboutPage} />
+              <Route exact path='/signin' render={() => user===null ? <SignInPage/> : <Redirect to='/'/>} />
+              <Route exact path='/signup' render={() => user===null ? <SignUpPage/> : <Redirect to='/'/>}/>
+              <Route exact path='/home' render={() => user===null ? <Redirect to='/'/> : <ProfilePage/>} /> 
+            </Suspense>
+          </ErrorBoundaries>
+            
+          
         </Switch>
       </PagesStyles>
       </UserContext.Provider>
