@@ -1,5 +1,5 @@
 const firebaseConfig = {
-    apiKey: "AIzaSyD5lUd0ZjE6EqRwKd8k2CMnbPWm422A1DQ",
+    apiKey: process.env.REACT_APP_FIREBASE,
     authDomain: "what-ve-eaten.firebaseapp.com",
     databaseURL: "https://what-ve-eaten.firebaseio.com",
     projectId: "what-ve-eaten",
